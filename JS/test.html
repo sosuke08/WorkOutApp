@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Console Test</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <script src="main.js"></script>
+
+
+        <button id="myButton">コンソール出力テスト</button>
+        <p id="result">結果</p>
+        <p id="translation_result">翻訳後</p>
+    </body>
+</html>
+
+
+<!-- // DEEPL API
+async function getDeepLText(input_text) {
+
+  let content = encodeURI('auth_key=' + DEEPL_KEY + '&text=' + input_text + '&source_lang=EN&target_lang=JA');
+  let url = DEEPL_URL + '?' + content;
+
+    let response = await fetch(url)
+    let result = await response.json();
+
+    console.log(result);
+
+    return await result;
+};
+
+
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  let myButton = document.getElementById("myButton");
+  let result = document.getElementById("result");
+  let translation_result = document.getElementById("translation_result");
+
+  if (myButton) {
+    myButton.addEventListener("click", async function() {
+      // Exercise API
+      let exercises =  await getExerciseMenus(params);
+      result.textContent = exercises[0]["instructions"];
+
+      // DeepL API
+      let deepl = await getDeepLText(exercises[0]["instructions"]);
+      translation_result.textContent = deepl["translations"][0]["text"];
+    });
+  }
+}); -->
