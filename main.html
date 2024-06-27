@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <title>main</title>
-    <meta charset="UTF-8" />
+<meta charset="UTF-8">
+<title>初心者向けホームページテンプレート tp_beginner8</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ここにサイト説明を入れます">
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
+<div id="container">
+
+<div id="contents">
+
+<header>
+<h1 id="logo"><a href="main.html"><img src="images/logo.jpg" alt="SAMPLE LOGO"></a></h1>
+</header>
+
+<div id="menubar">
+<nav>
+<ul>
+<li><a href="main.html">main</a></li>
+<li><a href="about_us.html">about_us</a></li>
+
+</ul>
+</nav>
+</div>
+<!--/#menubar-->
+
+<!--スライドショー（slick）-->
+<aside class="mainimg-slick">
+<div><img src="images/1.jpg" alt=""></div>
+<div><img src="images/2.jpg" alt=""></div>
+<div><img src="images/3.jpg" alt=""></div>
+</aside>
+
+<main>
+
+<section>
     <form id=" exercise-type-form">
         <label for=" exercise-type">トレーニングタイプ:</label>
         <select id="exercise-type" name="exercise-type">
@@ -58,8 +92,37 @@
     <p id="result">結果</p>
     <p id="translation_result">翻訳後</p>
 
-    <img src='' alt="画像表示前" id="image_result">
+    <img src='' alt="" id="image_result">
 
-    <script src="../JS/main.js"></script>
+    <script src="JS/main.js"></script>
+</section>
+
+
+</main>
+
+</div>
+<!--/#contents-->
+
+<footer>
+<small>Copyright&copy; <a href="main.html">サイト名</a> All Rights Reserved.</small>
+<span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
+
+<!--ページの上部へ戻るボタン-->
+<div class="pagetop"><a href="#"><i class="fas fa-angle-double-up"></i></a></div>
+
+</div>
+<!--/#container-->
+
+<!--jQueryの読み込み-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--スライドショー（slick）-->
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="js/slick.js"></script>
+
+<!--このテンプレート専用のスクリプト-->
+<script src="js/main.js"></script>
+
 </body>
 </html>

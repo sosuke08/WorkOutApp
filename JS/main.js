@@ -50,7 +50,19 @@ async function getDeepLText(input_text) {
 
 // Bing Search API
 async function getImageData(input_text){
-  let url = Azure_URL+ '?count=1&safeSearch=Strict&imageType=AnimatedGif&q=' + input_text;
+  const params = {
+    count: 1,
+    safeSearch: "Strict",
+    imageType: "AnimatedGif",
+    // license: "ShareCommercially",
+    // cc: "JP",
+    q: input_text,
+  }
+
+  const query_params = new URLSearchParams(params);
+
+  let url = Azure_URL + '?' + query_params;
+  console.log(url);
 
   const response = await fetch(url, {
       method: 'GET',
@@ -101,7 +113,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       // Bing Search API
       let bingImage = await getImageData(exercises[0]["name"]);
-      console.log(bingImage)
       image_result.src = await bingImage["value"][0]["contentUrl"];
 
       }
