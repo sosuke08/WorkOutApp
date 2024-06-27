@@ -102,7 +102,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       // Bing Search API
       let bingImage = await getImageData(exercises[0]["name"]);
       console.log(bingImage)
-      image_result.src = bingImage["value"][0]["contentUrl"];
+      image_result.src = await bingImage["value"][0]["contentUrl"];
 
       }
       else{
