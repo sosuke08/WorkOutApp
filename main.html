@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <form id=" exercise-type-form">
+        <label for=" exercise-type">トレーニングタイプ:</label>
+        <select id="exercise-type" name="exercise-type">
+            <option value="cardio">有酸素運動</option>
+            <option value="olympic_weightlifting">オリンピックウェイトリフティング</option>
+            <option value="plyometrics">プライオメトリクス</option>
+            <option value="powerlifting">パワーリフティング</option>
+            <option value="strength">筋力トレーニング</option>
+            <option value="stretching">ストレッチ</option>
+            <option value="strongman">ストロングマン</option>        
+        </select>
+    </form>
+
+    <form id="muscle-form">
+        <label for="muscle-groups">鍛えたい部位:</label>
+        <select id="muscle-groups" name="muscle-groups">
+            <option value="abdominals">腹筋</option>
+            <option value="abductors">外転筋</option>
+            <option value="adductors">内転筋</option>
+            <option value="biceps">二頭筋</option>
+            <option value="calves">ふくらはぎ</option>
+            <option value="chest">胸筋</option>
+            <option value="forearms">前腕</option>
+            <option value="glutes">臀筋</option>
+            <option value="hamstrings">ハムストリングス</option>
+            <option value="lats">広背筋</option>
+            <option value="lower_back">下背部</option>
+            <option value="middle_back">中背部</option>
+            <option value="neck">首</option>
+            <option value="quadriceps">大腿四頭筋</option>
+            <option value="traps">僧帽筋</option>
+            <option value="triceps">三頭筋</option>        
+        </select>
+    </form>
+
+    
+    <form id="exercise-type-form">
+        <label for="level">レベル:</label>
+        <select id="level" name="level">
+            <option value="beginner">初級</option>
+            <option value="intermediate">中級</option>
+            <option value="expert">上級</option>
+        </select>
+    </form>
+
+    <br><br>
+    <button id="myButton" type="button">Submit</button>
+
+
+
+    <p id="result">結果</p>
+    <p id="translation_result">翻訳後</p>
+
+    <script src="JS/main.js"></script>
+</body>
+</html>
