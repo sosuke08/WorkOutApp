@@ -84,14 +84,12 @@ async function getImageData(input_text){
 window.addEventListener("DOMContentLoaded", (event) => {
   let myButton = document.getElementById("myButton");
   let result = document.getElementById("result");
-  let translation_result = document.getElementById("translation_result");
-  let image_result = document.getElementById("image_result");
 
 
   if (myButton) {
     myButton.addEventListener("click", async function() {
-      result.textContent=""
-      translation_result.textContent=""
+      let result = document.getElementById('result');
+      result.textContent = ''
       muscle = document.getElementById("muscle-groups").value
       type = document.getElementById("exercise-type").value
       difficulty = document.getElementById("level").value
@@ -110,27 +108,29 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let exercises =  await getExerciseMenus(params);
 
       if(exercises.length>0){
-        for(i=0;i<exercises.length;i++){
-          result.textContent+=`${exercises[i]["name"]}:\n${exercises[i]["instructions"]}\n\n`
-        }
-      console.log(result.textContent)
-
-      // DeepL API
-      let deepl = await getDeepLText(result.textContent);
-      translation_result.textContent = deepl["translations"][0]["text"];
-
-      console.log(translation_result.textContent)
-
-
-      // Bing Search API
-      let bingImage = await getImageData(exercises[0]["name"]);
-      image_result.src = await bingImage["value"][0]["contentUrl"];
-
-
-      }
+        result.innerHTML = '';  // Clear any existing content
+        for (let i = 0; i < exercises.length; i++) {
+            const container = document.createElement('div');
+            container.className = 'container';
+            
+            const textDiv = document.createElement('div');
+            let deepl = await getDeepLText(exercises[i]["instructions"]);
+            console.log(exercises[i]["instructions"])
+            textDiv.textContent = deepl["translations"][0]["text"];
+            const img = document.createElement('img');
+            let bingImage = await getImageData(exercises[i]["name"]);
+            img.src = await bingImage["value"][0]["contentUrl"];
+            img.alt = deepl["translations"][0]["text"];
+        
+            container.appendChild(textDiv);
+            container.appendChild(img);
+        
+            result.appendChild(container);
+        }      }
       else{
         result.textContent="該当するトレーニングは存在しません。別のトレーニングタイプ・鍛えたい部位・レベルを選択してください"
       }
     });
   }
 });
+
