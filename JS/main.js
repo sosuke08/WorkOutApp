@@ -83,50 +83,57 @@ async function getImageData(input_text){
 
 window.addEventListener("DOMContentLoaded", (event) => {
   let myButton = document.getElementById("myButton");
-  let result = document.getElementById("result");
-  let translation_result = document.getElementById("translation_result");
-  let image_result = document.getElementById("image_result");
+  let result_box_parent = document.getElementsByClassName("result-container")[0];
 
 
   if (myButton) {
     myButton.addEventListener("click", async function() {
-      result.textContent=""
-      translation_result.textContent=""
-      muscle = document.getElementById("muscle-groups").value
-      type = document.getElementById("exercise-type").value
-      difficulty = document.getElementById("level").value
-      params = {}
+      muscle = document.getElementById("muscle-groups").value;
+      type = document.getElementById("exercise-type").value;
+      difficulty = document.getElementById("level").value;
+      params = {};
+
       if(muscle != 'nothing'){
-        params['muscle'] = muscle
+        params['muscle'] = muscle;
       }
       if(type != 'nothing'){
-        params['type'] = type
+        params['type'] = type;
       }
       if(difficulty != 'nothing'){
-        params['difficulty'] = difficulty
+        params['difficulty'] = difficulty;
       }
     
       // Exercise API
       let exercises =  await getExerciseMenus(params);
+      console.log(exercises);
 
       if(exercises.length > 0){
         for(i=0; i < exercises.length; i++){
-          result.textContent = `${exercises[i]["name"]}: ${exercises[i]["instructions"]}`
-          console.log(result.textContent)
+          let result_box_individual = document.createElement("div");
+          result_box_parent.appendChild(result_box_individual);
+
+          let title = document.createElement("p");
+          let result = document.createElement("p");
+          let image_result = document.createElement("img");
+
+          title.textContent = await getDeepLText(`${exercises[i]["name"]}`);
+          result_box_individual.appendChild(title);
 
           // DeepL API
-          let deepl = await getDeepLText(result.textContent);
-          translation_result.textContent = deepl["translations"][0]["text"];
-          console.log(translation_result.textContent)
+          let deepl = await getDeepLText(`${exercises[i]["instructions"]}`);
+          result.textContent = deepl["translations"][0]["text"];
+          result_box_individual.appendChild(result);
+          console.log(result.textContent);
 
 
           // Bing Search API
-          let bingImage = await getImageData(exercises[0]["name"]);
+          let bingImage = await getImageData(exercises[i]["name"]);
           image_result.src = await bingImage["value"][0]["contentUrl"];
+          result_box_individual.appendChild(image_result);
         }
       }
       else{
-        result.textContent="該当するトレーニングは存在しません。別のトレーニングタイプ・鍛えたい部位・レベルを選択してください"
+        result.textContent="該当するトレーニングは存在しません。別のトレーニングタイプ・鍛えたい部位・レベルを選択してください";
       }
     });
   }
