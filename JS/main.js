@@ -88,6 +88,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   if (myButton) {
     myButton.addEventListener("click", async function() {
+      while (result_box_parent.firstChild) {
+        result_box_parent.removeChild(result_box_parent.firstChild);
+      }
+
       muscle = document.getElementById("muscle-groups").value;
       type = document.getElementById("exercise-type").value;
       difficulty = document.getElementById("level").value;
@@ -114,14 +118,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
           let title = document.createElement("p");
           let result = document.createElement("p");
+          let image_box = document.createElement("div");
           let image_result = document.createElement("img");
 
-          title.textContent = await getDeepLText(`${exercises[i]["name"]}`);
+          // DeepL API
+          let deepl_title = await getDeepLText(exercises[i]["name"]);
+          title.textContent = deepl_title["translations"][0]["text"];
           result_box_individual.appendChild(title);
+          console.log(title.textContent);
 
           // DeepL API
-          let deepl = await getDeepLText(`${exercises[i]["instructions"]}`);
-          result.textContent = deepl["translations"][0]["text"];
+          let deepl_result = await getDeepLText(exercises[i]["instructions"]);
+          result.textContent = deepl_result["translations"][0]["text"];
           result_box_individual.appendChild(result);
           console.log(result.textContent);
 
@@ -129,7 +137,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
           // Bing Search API
           let bingImage = await getImageData(exercises[i]["name"]);
           image_result.src = await bingImage["value"][0]["contentUrl"];
-          result_box_individual.appendChild(image_result);
+          image_box.style.textAlign = "center";
+          result_box_individual.appendChild(image_box);
+          image_box.appendChild(image_result);
+
         }
       }
       else{
