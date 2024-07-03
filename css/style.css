@@ -397,5 +397,86 @@ footer .pr {display: block;}
 	.pc {display: block;}
 
 	}/*追加指定ここまで*/
+/* プルダウンメニューとフォームの横並びスタイル */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
+.form-container form {
+    flex: 1;
+    margin: 0.5rem;
+    min-width: 200px;
+}
 
+select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(173, 212, 220, 0.25);
+}
+
+/* Submitボタンのスタイル */
+.button-container {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+button {
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+button:hover {
+    color: #fff;
+    background-color: #93b8c3;
+    border-color: #8ab0bb;
+    transform: scale(1.05);
+}
+
+button:focus {
+    color: #fff;
+    background-color: #7ba4ad;
+    border-color: #72a0a8;
+    box-shadow: 0 0 0 0.2rem rgba(173, 212, 220, 0.5);
+    transform: scale(1.05);
+}
+
+/* 結果と翻訳後のスタイル */
+.result-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 0.25rem;
+}
+
+.result-container p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
