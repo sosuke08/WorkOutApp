@@ -109,24 +109,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
       // Exercise API
       let exercises =  await getExerciseMenus(params);
 
-      if(exercises.length>0){
-        for(i=0;i<exercises.length;i++){
-          result.textContent+=`${exercises[i]["name"]}:\n${exercises[i]["instructions"]}\n\n`
+      if(exercises.length > 0){
+        for(i=0; i < exercises.length; i++){
+          result.textContent = `${exercises[i]["name"]}: ${exercises[i]["instructions"]}`
+          console.log(result.textContent)
+
+          // DeepL API
+          let deepl = await getDeepLText(result.textContent);
+          translation_result.textContent = deepl["translations"][0]["text"];
+          console.log(translation_result.textContent)
+
+
+          // Bing Search API
+          let bingImage = await getImageData(exercises[0]["name"]);
+          image_result.src = await bingImage["value"][0]["contentUrl"];
         }
-      console.log(result.textContent)
-
-      // DeepL API
-      let deepl = await getDeepLText(result.textContent);
-      translation_result.textContent = deepl["translations"][0]["text"];
-
-      console.log(translation_result.textContent)
-
-
-      // Bing Search API
-      let bingImage = await getImageData(exercises[0]["name"]);
-      image_result.src = await bingImage["value"][0]["contentUrl"];
-
-
       }
       else{
         result.textContent="該当するトレーニングは存在しません。別のトレーニングタイプ・鍛えたい部位・レベルを選択してください"
