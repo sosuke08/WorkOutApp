@@ -88,6 +88,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   if (myButton) {
     myButton.addEventListener("click", async function() {
+
       while (result_box_parent.firstChild) {
         result_box_parent.removeChild(result_box_parent.firstChild);
       }
