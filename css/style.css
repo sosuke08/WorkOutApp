@@ -164,6 +164,11 @@ header {
 /*画像を囲むブロック*/
 .mainimg-slick {
 	margin-bottom: 80px;	/*画像の下に空けるスペース*/
+	text-align: center;
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 /*丸いページナビボタン全体を囲むブロック*/
